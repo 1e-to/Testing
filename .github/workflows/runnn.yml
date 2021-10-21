@@ -1,0 +1,23 @@
+name: LALALA
+
+on:
+  push:
+    branches:
+    tags:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo
+        run: echo "BUILD"
+
+  upload:
+    needs: build
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo
+        run: echo "UPLOAD"
