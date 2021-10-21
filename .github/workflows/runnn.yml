@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Echo
         run: echo "BUILD"
+      - name: Ref
+        run: echo github.ref
 
   upload:
     needs: build
