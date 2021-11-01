@@ -15,9 +15,9 @@ jobs:
       - name: CHECKS
         run: |
           echo github.ref
-          echo github.ref == 'refs/heads/master'
-          echo ${{github.ref}} == 'refs/heads/master'
-          echo ${{github.ref == 'refs/heads/master'}}
+          echo github.ref == 'refs/heads/release*'
+          echo ${{github.ref}} == 'refs/heads/release*'
+          echo ${{github.ref == 'refs/heads/release*'}}
           echo ${{github.ref == 'refs/heads/master'}} || ${{github.ref == 'refs/heads/release*'}}
           echo github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release*'
           echo ${{github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release*'}}
