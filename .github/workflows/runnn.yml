@@ -21,7 +21,7 @@ jobs:
           echo ${{github.ref == 'refs/heads/master'}} || ${{github.ref == 'refs/heads/release*'}}
           echo github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release*'
           echo ${{github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release*'}}
-          echo contains(github.ref, "release")
+          echo startsWith(github.ref, "refs/heads/release")
 
   upload:
     needs: build
