@@ -15,7 +15,9 @@ jobs:
 
   upload:
     needs: build
-    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release*' }}
+    if: |
+      github.ref == 'refs/heads/master'
+        || github.ref == 'refs/heads/release*'
     runs-on: ubuntu-latest
 
     steps:
