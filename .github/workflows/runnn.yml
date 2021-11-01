@@ -12,10 +12,19 @@ jobs:
     steps:
       - name: Echo
         run: echo "BUILD"
+      - name: CHECKS
+        run: |
+          echo github.ref
+          echo github.ref == 'refs/heads/release*'
+          echo ${{github.ref}} == 'refs/heads/release*'
+          echo ${{github.ref == 'refs/heads/release*'}}
+          echo ${{github.ref == 'refs/heads/master'}} || ${{github.ref == 'refs/heads/release*'}}
+          echo github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release*'
+          echo ${{github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release*'}}
 
   upload:
     needs: build
-    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release*' }}
+    if: ${{github.ref == 'refs/heads/main' || (startsWith(github.ref, 'refs/heads/release') == true)}}
     runs-on: ubuntu-latest
 
     steps:
