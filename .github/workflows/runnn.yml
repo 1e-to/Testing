@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: Echo
         run: echo "BUILD"
+      - name: CHECKS
+        run: |
+          echo github.ref
+          echo github.ref == 'refs/heads/master'
+          echo ${{github.ref}} == 'refs/heads/master'
+          echo ${{github.ref == 'refs/heads/master'}}
 
   upload:
     needs: build
