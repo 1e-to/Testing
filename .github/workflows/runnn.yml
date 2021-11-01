@@ -24,7 +24,7 @@ jobs:
 
   upload:
     needs: build
-    if: ${{github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release0.2'}}
+    if: ${{github.ref == 'refs/heads/master' || (startsWith(github.ref, 'release') == true)}}
     runs-on: ubuntu-latest
 
     steps:
