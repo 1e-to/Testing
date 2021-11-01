@@ -24,7 +24,7 @@ jobs:
 
   upload:
     needs: build
-    if: ${{github.ref == 'refs/heads/master' || starstWith(github.ref, "refs/heads/release")}}
+    if: ${{github.ref == 'refs/heads/master' || starstWith(github.ref, "release")}}
     runs-on: ubuntu-latest
 
     steps:
