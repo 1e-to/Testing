@@ -18,12 +18,14 @@ jobs:
           echo github.ref == 'refs/heads/master'
           echo ${{github.ref}} == 'refs/heads/master'
           echo ${{github.ref == 'refs/heads/master'}}
+          echo ${{github.ref == 'refs/heads/master'}} || ${{github.ref == 'refs/heads/release*'}}
+          echo github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release*'
+          echo ${{github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release*'}}
 
   upload:
     needs: build
     if: |
-      ${{github.ref == 'refs/heads/master'}}
-        || ${{github.ref == 'refs/heads/release*'}}
+      ${{github.ref == 'refs/heads/master'}} || ${{github.ref == 'refs/heads/release*'}}
     runs-on: ubuntu-latest
 
     steps:
