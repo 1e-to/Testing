@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    envs: 
+      IS_RELEASE: ${{startsWith(github.ref, "refs/heads/release")}}
 
     steps:
       - name: Echo
@@ -21,7 +23,7 @@ jobs:
           echo ${{github.ref == 'refs/heads/master'}} || ${{github.ref == 'refs/heads/release*'}}
           echo github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release*'
           echo ${{github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release*'}}
-          echo startsWith(${{github.ref}}, "refs/heads/release")
+          echo $IS_RELEASE
 
   upload:
     needs: build
